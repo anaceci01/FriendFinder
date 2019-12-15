@@ -37,11 +37,20 @@ module.exports = function(app) {
             console.log("Total friend score " + bfriendScore);
             totalDifference += Math.abs(sum - bfriendScore);
             console.log(" -------------> " + totalDifference);
-        };
+
+            if (totalDifference <= bestMatch.friendDifference) {
+                bestMatch.name = friends[i].name;
+                bestMatch.photo = friends[i].photo;
+                bestMatch.friendDifference = totalDifference;
+            }
+            console.log(totalDifference + " Total Difference");
+        }
+
         console.log(bestMatch);
         friends.push(userData);
         console.log("New user added");
         console.log(userData);
         res.json(bestMatch);
     });
+
 };
