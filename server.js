@@ -10,10 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(express.static("app/public"));
+app.get(express.static("app/public"));
 
 require("./app/routing/apiRoutes.js") //(app);
 require("./app/routing/htmlRoutes.js") //(app);
 
 
-app.listen(port, () => console.log("listening on port %s", port));
+app.listen(port, () => console.log("listening on port ", port));
