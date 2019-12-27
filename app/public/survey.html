@@ -86,7 +86,7 @@
             <strong>Question 4</strong>
         </h3>
         <h4>You rarely do something just out of sheer curiosity</h4>
-        > <select data-placeholder="" class="chosen-select" id="q4">
+        <select data-placeholder="" class="chosen-select" id="q4">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -99,7 +99,7 @@
             <strong>Question 5</strong>
         </h3>
         <h4>People can rarely upset you</h4>
-        > <select data-placeholder="" class="chosen-select" id="q5">
+        <select data-placeholder="" class="chosen-select" id="q5">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -112,7 +112,7 @@
             <strong>Question 6</strong>
         </h3>
         <h4>It is often difficult for you to relate to other people's feelings.</h4>
-        > <select data-placeholder="" class="chosen-select" id="q6">
+        <select data-placeholder="" class="chosen-select" id="q6">
             <option value=""></option>            
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -125,7 +125,7 @@
             <strong>Question 7</strong>
         </h3>
         <h4>In a discussion, truth should be more important than people's sensitivities.</h4>
-        > <select data-placeholder="" class="chosen-select" id="q7">
+        <select data-placeholder="" class="chosen-select" id="q7">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -138,7 +138,7 @@
             <strong>Question 8</strong>
         </h3>
         <h4>You rarely get carried away by fantasies and ideas</h4>
-        > <select data-placeholder="" class="chosen-select" id="q8">
+        <select data-placeholder="" class="chosen-select" id="q8">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -152,7 +152,7 @@
         </h3>
         <h4>You think that everyone's views should be respected regardless of whether they are supported by facts or not
         </h4>
-        > <select data-placeholder="" class="chosen-select" id="q9">
+        <select data-placeholder="" class="chosen-select" id="q9">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -165,7 +165,7 @@
             <strong>Question 10</strong>
         </h3>
         <h4>You feel more energetic after spendging time with a group of people.</h4>
-        > <select data-placeholder="" class="chosen-select" id="q10">
+        <select data-placeholder="" class="chosen-select" id="q10">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -181,6 +181,8 @@
         </button>
         <br>
         <br>
+        <div><a href="/api/friends">API list</a></div>
+
 
 
 
@@ -232,29 +234,30 @@
                 });
                 return isValid;
             }
-            if (validateForm() === true) {
+            if (validateForm()) {
                 var userData = {
                     name: $("#name").val(),
                     photo: $("#photo").val(),
                     scores: [
-                        $("q1").val(),
-                        $("q2").val(),
-                        $("q3").val(),
-                        $("q4").val(),
-                        $("q5").val(),
-                        $("q6").val(),
-                        $("q7").val(),
-                        $("q8").val(),
-                        $("q9").val(),
-                        $("q10").val(),
+                        $("#q1").val(),
+                        $("#q2").val(),
+                        $("#q3").val(),
+                        $("#q4").val(),
+                        $("#q5").val(),
+                        $("#q6").val(),
+                        $("#q7").val(),
+                        $("#q8").val(),
+                        $("#q9").val(),
+                        $("#q10").val(),
                     ]
                 };
                 var currentURL = window.location.origin;
 
                 $.post(currentURL + "/api/friends", userData, function(data) {
-                    $("#matchName").text(data.name);
-                    $("matchImg").attr("src", data.photo);
-                    $("resultsModal").modal("toggle");
+                    // $("#matchName").text(data.name);
+                    // $("matchImg").attr("src", data.photo);
+                    // $("resultsModal").modal("toggle");
+                    alert("working")
                 });
             } else {
                 alert("Please fill out all fields before submitting!");
